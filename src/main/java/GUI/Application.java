@@ -1,18 +1,9 @@
 package GUI;
 
 import java.io.File;
-import java.nio.IntBuffer;
-import java.nio.file.FileSystem;
-import java.util.Arrays;
-import java.util.StringTokenizer;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
 
 import Logic.FileManager;
-import Logic.Processor;
-import com.google.common.eventbus.EventBus;
 
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -47,7 +38,7 @@ public class Application   {
         FileManager manager = ctx.getBean(FileManager.class);
 
 
-        manager.checkTarger(new File("c:\\Users\\Marion\\Downloads\\hwk2.txt").toPath(),new File("C:\\Users\\Marion\\Downloads\\TurtleBeach\\test.txt").toPath());
+        manager.checkTarget(new File("c:\\Users\\Marion\\Downloads\\hwk2.txt").toPath(),new File("C:\\Users\\Marion\\Downloads\\TurtleBeach\\test.txt").toPath());
 
 
     }
