@@ -18,6 +18,7 @@ public class FileManager implements Runnable {
     Processor processor;
     File sourceFolder;
     File destinationFolder;
+    EventBus eventBus;
 
     public void checkTarget(File sourceFolder, File destinationFolder) throws IOException {
 
@@ -25,14 +26,13 @@ public class FileManager implements Runnable {
         this.destinationFolder = destinationFolder;
         processor = new Processor();
 
-
-        EventBus eventBus = new EventBus();
+eventBus = new EventBus();
         //  eventBus.register(new FileManager());
         eventBus.register(new Processor());
 
         processor.copyFiles(sourceFolder, destinationFolder);
         System.out.println("Post Simple EventBus Example");
-        eventBus.post("Simple EventBus Example");
+
         run();
     }
 
@@ -68,6 +68,7 @@ public class FileManager implements Runnable {
 
                         //    changed
                         System.out.println("Modified" + filesArray.get(i));
+                        eventBus.post("Simple EventBus Example");
                     }
                 }
 
