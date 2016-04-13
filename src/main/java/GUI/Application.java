@@ -19,7 +19,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableAutoConfiguration
 @ComponentScan
 public class Application   {
-    private static final int NUMBER_OF_QUOTES = 10;
+
 
 
 @Bean

@@ -55,10 +55,10 @@ public class FileManager implements Runnable  {
     public void run() {
         ArrayList<File> filesArray = new ArrayList<>();
         HashMap dir = new HashMap();
-        System.out.println("Before" + " is running");
+
         for (; ; ) {
             try {
-                Thread.sleep(5000);
+                Thread.sleep(500000);
 
                 HashSet checkedFiles = new HashSet();
 
@@ -101,7 +101,7 @@ public class FileManager implements Runnable  {
                 e.printStackTrace();
             }
 
-            System.out.println("After" + " is running");
+            System.out.println("Monitoring Folder" + dir);
         }
     }
 }
