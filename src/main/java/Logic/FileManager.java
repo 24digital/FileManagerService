@@ -23,8 +23,6 @@ import java.util.*;
 /**
  * Created by Marion on 03/29/16.
  */
-@EnableScheduling
-@EnableAsync
 @Configuration
 @Component
 public class FileManager implements Runnable  {
