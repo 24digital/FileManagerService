@@ -58,7 +58,7 @@ public class FileManager implements Runnable  {
 
         for (; ; ) {
             try {
-                Thread.sleep(500000);
+                Thread.sleep(2000);
 
                 HashSet checkedFiles = new HashSet();
 
