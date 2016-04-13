@@ -1,15 +1,12 @@
 package Logic;
 
 import com.google.common.eventbus.Subscribe;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
-import java.util.concurrent.CountDownLatch;
 
 /**
  * Created by Marion on 03/29/16.
