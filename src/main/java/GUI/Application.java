@@ -1,6 +1,9 @@
 package GUI;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 import Logic.FileManager;
 
@@ -28,17 +31,37 @@ public class Application   {
 
     public static void main(String... args) throws Exception {
         ApplicationContext ctx = SpringApplication.run(Application.class, args);
-
+        File source = null;
+        File target = null;
         System.out.println("Hello to File Manager");
 
+        try{
+            BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
 
+            System.out.println("input source folder");
+            String s = bufferRead.readLine();
+            source = new File(s);
+            System.out.println(s+" "+source.exists());
+
+            if(source.isDirectory())
+            System.out.println(source.listFiles().toString());
+
+            System.out.println("input target folder");
+            String targets = bufferRead.readLine();
+            target = new File(targets);
+            System.out.println(target+" "+target.exists());
+        }
+        catch(IOException e)
+        {
+            e.printStackTrace();
+        }
 
 
 
         FileManager manager = ctx.getBean(FileManager.class);
 
 
-        manager.checkTarget(new File("c:\\Users\\Marion\\Downloads\\hwk2.txt").toPath(),new File("C:\\Users\\Marion\\Downloads\\TurtleBeach\\test.txt").toPath());
+        manager.checkTarget(source,target);
 
 
     }
