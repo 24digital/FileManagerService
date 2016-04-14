@@ -15,23 +15,24 @@ import java.util.*;
 @Component
 public class FileManager implements Runnable {
 
-    Processor processor;
-    File sourceFolder;
-    File destinationFolder;
-    EventBus eventBus;
+
+    private File sourceFolder;
+    private File destinationFolder;
+    private EventBus eventBus;
+    private ArrayList<File> process;
 
     public void checkTarget(File sourceFolder, File destinationFolder) throws IOException {
 
         this.sourceFolder = sourceFolder;
         this.destinationFolder = destinationFolder;
-        processor = new Processor();
+        process = new ArrayList<>();
+        process.add(sourceFolder);
+        process.add(destinationFolder);
 
-eventBus = new EventBus();
+        eventBus = new EventBus();
         //  eventBus.register(new FileManager());
         eventBus.register(new Processor());
-
-        processor.copyFiles(sourceFolder, destinationFolder);
-        System.out.println("Post Simple EventBus Example");
+        eventBus.post(process);
 
         run();
     }
@@ -67,8 +68,9 @@ eventBus = new EventBus();
                         dir.put(filesArray.get(i), new Long(filesArray.get(i).lastModified()));
 
                         //    changed
-                        System.out.println("Modified" + filesArray.get(i));
-                        eventBus.post("Simple EventBus Example");
+                        System.out.println("!!!!!!!!!!!!!!!!  A File has been MODIFIED and now Syncing  !!!!!!!!!!!!!!!!!!!!!!!!!!!!->" + filesArray.get(i));
+
+                        eventBus.post(process);
                     }
                 }
 

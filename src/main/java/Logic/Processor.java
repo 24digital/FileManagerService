@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
 
 /**
  * Created by Marion on 03/29/16.
@@ -15,8 +16,8 @@ import java.nio.file.StandardCopyOption;
 public class Processor  {
 
     @Subscribe
-    public void task(String s)
-    {
+    public void task(ArrayList<File> fileList) throws IOException {
+        this.copyFiles(fileList.get(0),fileList.get(1));
         System.out.println("Registered the posted that just came out:Processor");
     }
 
